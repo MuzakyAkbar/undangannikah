@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save The Date - Zendy & Dilla</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Music Toggle Button -->
+    <button class="music-toggle" id="musicToggle">
+        <span class="music-icon">♪</span>
+    </button>
+
+    <!-- Cover Page -->
+    <section class="cover-section active" id="coverSection">
+        <div class="card-frame">
+            <!-- Wavy Border Top -->
+            <svg class="wavy-border top" viewBox="0 0 400 30" preserveAspectRatio="none">
+                <path d="M0,15 Q10,5 20,15 T40,15 T60,15 T80,15 T100,15 T120,15 T140,15 T160,15 T180,15 T200,15 T220,15 T240,15 T260,15 T280,15 T300,15 T320,15 T340,15 T360,15 T380,15 T400,15" 
+                      stroke="black" stroke-width="2" fill="none"/>
+            </svg>
+
+            <!-- Corner Bows -->
+            <div class="bow top-left">
+                <svg viewBox="0 0 50 50">
+                    <path d="M25,25 Q15,15 10,25 Q15,20 20,25 M25,25 Q35,15 40,25 Q35,20 30,25 M20,25 L30,25" 
+                          stroke="black" stroke-width="2" fill="none"/>
+                </svg>
+            </div>
+            <div class="bow top-right">
+                <svg viewBox="0 0 50 50">
+                    <path d="M25,25 Q15,15 10,25 Q15,20 20,25 M25,25 Q35,15 40,25 Q35,20 30,25 M20,25 L30,25" 
+                          stroke="black" stroke-width="2" fill="none"/>
+                </svg>
+            </div>
+            <div class="bow bottom-left">
+                <svg viewBox="0 0 50 50">
+                    <path d="M25,25 Q15,15 10,25 Q15,20 20,25 M25,25 Q35,15 40,25 Q35,20 30,25 M20,25 L30,25" 
+                          stroke="black" stroke-width="2" fill="none"/>
+                </svg>
+            </div>
+            <div class="bow bottom-right">
+                <svg viewBox="0 0 50 50">
+                    <path d="M25,25 Q15,15 10,25 Q15,20 20,25 M25,25 Q35,15 40,25 Q35,20 30,25 M20,25 L30,25" 
+                          stroke="black" stroke-width="2" fill="none"/>
+                </svg>
+            </div>
+
+            <!-- Left Border -->
+            <svg class="wavy-border left" viewBox="0 0 30 500" preserveAspectRatio="none">
+                <path d="M15,0 Q5,10 15,20 T15,40 T15,60 T15,80 T15,100 T15,120 T15,140 T15,160 T15,180 T15,200 T15,220 T15,240 T15,260 T15,280 T15,300 T15,320 T15,340 T15,360 T15,380 T15,400 T15,420 T15,440 T15,460 T15,480 T15,500" 
+                      stroke="black" stroke-width="2" fill="none"/>
+            </svg>
+
+            <!-- Right Border -->
+            <svg class="wavy-border right" viewBox="0 0 30 500" preserveAspectRatio="none">
+                <path d="M15,0 Q5,10 15,20 T15,40 T15,60 T15,80 T15,100 T15,120 T15,140 T15,160 T15,180 T15,200 T15,220 T15,240 T15,260 T15,280 T15,300 T15,320 T15,340 T15,360 T15,380 T15,400 T15,420 T15,440 T15,460 T15,480 T15,500" 
+                      stroke="black" stroke-width="2" fill="none"/>
+            </svg>
+
+            <!-- Bottom Border -->
+            <svg class="wavy-border bottom" viewBox="0 0 400 30" preserveAspectRatio="none">
+                <path d="M0,15 Q10,5 20,15 T40,15 T60,15 T80,15 T100,15 T120,15 T140,15 T160,15 T180,15 T200,15 T220,15 T240,15 T260,15 T280,15 T300,15 T320,15 T340,15 T360,15 T380,15 T400,15" 
+                      stroke="black" stroke-width="2" fill="none"/>
+            </svg>
+
+            <!-- Card Content -->
+            <div class="card-content">
+                <h1 class="save-the-date">SAVE THE DATE</h1>
+                
+                <!-- Heart with Date -->
+                <div class="heart-container">
+                    <svg class="heart-frame" viewBox="0 0 200 200">
+                        <path d="M100,180 Q20,120 20,80 Q20,40 50,40 Q80,40 100,70 Q120,40 150,40 Q180,40 180,80 Q180,120 100,180" 
+                              stroke="black" stroke-width="3" fill="white"/>
+                        
+                        <!-- Hands holding heart -->
+                        <g class="hand left-hand">
+                            <path d="M15,100 Q10,110 15,120 L25,125" stroke="black" stroke-width="2" fill="none"/>
+                            <circle cx="12" cy="105" r="3" fill="black"/>
+                            <circle cx="10" cy="112" r="2" fill="black"/>
+                        </g>
+                        <g class="hand right-hand">
+                            <path d="M185,100 Q190,110 185,120 L175,125" stroke="black" stroke-width="2" fill="none"/>
+                            <circle cx="188" cy="105" r="3" fill="black"/>
+                            <circle cx="190" cy="112" r="2" fill="black"/>
+                        </g>
+                    </svg>
+                    
+                    <div class="date-in-heart">
+                        <div class="day">28</div>
+                        <div class="month">03</div>
+                        <div class="year">26</div>
+                    </div>
+                </div>
+
+                <!-- Couple Silhouette -->
+                <div class="couple-silhouette">
+                    <svg viewBox="0 0 200 150">
+                        <!-- Groom (Left) with head and mustache -->
+                        <g class="groom">
+                            <!-- Head -->
+                            <circle cx="77" cy="45" r="15" fill="white" stroke="black" stroke-width="2"/>
+                            <!-- Mustache -->
+                            <path d="M70,50 Q77,52 84,50" stroke="black" stroke-width="2" fill="none"/>
+                            <!-- Body -->
+                            <rect x="60" y="60" width="35" height="50" fill="black" rx="2"/>
+                            <!-- Arms -->
+                            <rect x="58" y="65" width="4" height="25" fill="black" rx="2"/>
+                            <rect x="93" y="65" width="4" height="25" fill="black" rx="2"/>
+                            <!-- Legs -->
+                            <rect x="65" y="110" width="12" height="35" fill="black"/>
+                            <rect x="78" y="110" width="12" height="35" fill="black"/>
+                            <!-- Shoes -->
+                            <rect x="63" y="145" width="16" height="5" fill="black" rx="2"/>
+                            <rect x="76" y="145" width="16" height="5" fill="black" rx="2"/>
+                        </g>
+
+                        <!-- Bride (Right) with hijab -->
+                        <g class="bride">
+                            <!-- Hijab -->
+                            <path d="M105,30 Q123,25 141,30 L141,50 Q123,45 105,50 Z" fill="white" stroke="black" stroke-width="2"/>
+                            <!-- Face -->
+                            <ellipse cx="123" cy="45" rx="12" ry="14" fill="white" stroke="black" stroke-width="2"/>
+                            <!-- Eyes -->
+                            <circle cx="119" cy="43" r="1.5" fill="black"/>
+                            <circle cx="127" cy="43" r="1.5" fill="black"/>
+                            <!-- Smile -->
+                            <path d="M119,49 Q123,51 127,49" stroke="black" stroke-width="1" fill="none"/>
+                            <!-- Body/Dress -->
+                            <path d="M105,55 L115,55 L128,115 L100,115 Z" fill="white" stroke="black" stroke-width="2"/>
+                            <path d="M141,55 L131,55 L118,115 L146,115 Z" fill="white" stroke="black" stroke-width="2"/>
+                            <!-- Dress details -->
+                            <line x1="112" y1="70" x2="108" y2="110" stroke="black" stroke-width="1"/>
+                            <line x1="123" y1="60" x2="123" y2="115" stroke="black" stroke-width="1"/>
+                            <line x1="134" y1="70" x2="138" y2="110" stroke="black" stroke-width="1"/>
+                            <!-- Legs/Feet -->
+                            <line x1="113" y1="115" x2="110" y2="145" stroke="black" stroke-width="5"/>
+                            <line x1="133" y1="115" x2="136" y2="145" stroke="black" stroke-width="5"/>
+                            <!-- Shoes -->
+                            <ellipse cx="110" cy="147" rx="5" ry="3" fill="black"/>
+                            <ellipse cx="136" cy="147" rx="5" ry="3" fill="black"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <!-- Names -->
+                <h2 class="couple-names">Zendy & Dilla</h2>
+
+                <!-- Open Button -->
+                <button class="open-btn" id="openInvitation">
+                    <span>Open</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        
+        <!-- Bismillah Section -->
+        <section class="bismillah-section">
+            <div class="sketch-card">
+                <div class="bismillah-text">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+                <p class="ayat">
+                    "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya"
+                </p>
+                <p class="ayat-ref">(QS. Ar-Rum: 21)</p>
+            </div>
+        </section>
+
+        <!-- Couple Section -->
+        <section class="couple-section">
+            <div class="sketch-card">
+                <h2 class="section-title">MEMPELAI</h2>
+                
+                <div class="couple-grid">
+                    <!-- Groom -->
+                    <div class="person-card">
+                        <div class="person-sketch">
+                            <svg viewBox="0 0 100 120">
+                                <!-- Head -->
+                                <circle cx="50" cy="25" r="12" fill="white" stroke="black" stroke-width="2"/>
+                                <!-- Hair -->
+                                <path d="M40,18 Q50,14 60,18" stroke="black" stroke-width="2" fill="none"/>
+                                <!-- Eyes -->
+                                <circle cx="46" cy="24" r="1.5" fill="black"/>
+                                <circle cx="54" cy="24" r="1.5" fill="black"/>
+                                <!-- Mustache -->
+                                <path d="M44,30 Q50,32 56,30" stroke="black" stroke-width="2" fill="none"/>
+                                <!-- Body -->
+                                <rect x="38" y="37" width="24" height="45" fill="white" stroke="black" stroke-width="2" rx="2"/>
+                                <!-- Shirt buttons -->
+                                <circle cx="50" cy="47" r="1.5" fill="black"/>
+                                <circle cx="50" cy="57" r="1.5" fill="black"/>
+                                <circle cx="50" cy="67" r="1.5" fill="black"/>
+                                <!-- Arms -->
+                                <line x1="38" y1="45" x2="28" y2="55" stroke="black" stroke-width="3" stroke-linecap="round"/>
+                                <line x1="62" y1="45" x2="72" y2="55" stroke="black" stroke-width="3" stroke-linecap="round"/>
+                                <!-- Legs -->
+                                <rect x="42" y="82" width="7" height="30" fill="black"/>
+                                <rect x="51" y="82" width="7" height="30" fill="black"/>
+                                <!-- Shoes -->
+                                <rect x="40" y="112" width="11" height="4" fill="black" rx="2"/>
+                                <rect x="49" y="112" width="11" height="4" fill="black" rx="2"/>
+                            </svg>
+                        </div>
+                        <h3>Zendy</h3>
+                        <p class="child-of">Putra dari:</p>
+                        <p class="parents">Bapak ... & Ibu ...</p>
+                        <a href="#" class="ig-link">📷 @zendy</a>
+                    </div>
+
+                    <!-- Heart Divider -->
+                    <div class="heart-divider">
+                        <svg viewBox="0 0 60 60">
+                            <path d="M30,50 Q10,35 10,20 Q10,10 20,10 Q30,10 30,20 Q30,10 40,10 Q50,10 50,20 Q50,35 30,50" 
+                                  fill="white" stroke="black" stroke-width="2"/>
+                        </svg>
+                    </div>
+
+                    <!-- Bride -->
+                    <div class="person-card">
+                        <div class="person-sketch">
+                            <svg viewBox="0 0 100 120">
+                                <!-- Hijab -->
+                                <path d="M32,12 Q50,8 68,12 L68,35 Q50,30 32,35 Z" fill="white" stroke="black" stroke-width="2"/>
+                                <!-- Face -->
+                                <ellipse cx="50" cy="28" rx="12" ry="15" fill="white" stroke="black" stroke-width="2"/>
+                                <!-- Eyes -->
+                                <circle cx="46" cy="26" r="1.5" fill="black"/>
+                                <circle cx="54" cy="26" r="1.5" fill="black"/>
+                                <!-- Eyebrows -->
+                                <path d="M44,23 L48,23" stroke="black" stroke-width="1"/>
+                                <path d="M52,23 L56,23" stroke="black" stroke-width="1"/>
+                                <!-- Smile -->
+                                <path d="M45,33 Q50,35 55,33" stroke="black" stroke-width="1.5" fill="none"/>
+                                <!-- Body/Dress -->
+                                <path d="M35,38 L42,38 L52,105 L30,105 Z" fill="white" stroke="black" stroke-width="2"/>
+                                <path d="M65,38 L58,38 L48,105 L70,105 Z" fill="white" stroke="black" stroke-width="2"/>
+                                <!-- Dress details -->
+                                <line x1="44" y1="55" x2="40" y2="100" stroke="black" stroke-width="1"/>
+                                <line x1="50" y1="43" x2="50" y2="105" stroke="black" stroke-width="1"/>
+                                <line x1="56" y1="55" x2="60" y2="100" stroke="black" stroke-width="1"/>
+                                <!-- Feet -->
+                                <ellipse cx="40" cy="110" rx="5" ry="3" fill="black"/>
+                                <ellipse cx="60" cy="110" rx="5" ry="3" fill="black"/>
+                            </svg>
+                        </div>
+                        <h3>Dilla Nur Octaviana</h3>
+                        <p class="child-of">Putri dari:</p>
+                        <p class="parents">Bapak ... & Ibu ...</p>
+                        <a href="#" class="ig-link">📷 @dillanur</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Event Section -->
+        <section class="event-section">
+            <div class="sketch-card">
+                <h2 class="section-title">WAKTU & TEMPAT</h2>
+                
+                <div class="event-box event-single">
+                    <div class="event-icon-sketch">
+                        <svg viewBox="0 0 100 100">
+                            <!-- Main Dome -->
+                            <ellipse cx="50" cy="35" rx="20" ry="12" fill="white" stroke="black" stroke-width="2"/>
+                            <!-- Minaret Left -->
+                            <rect x="20" y="40" width="8" height="35" fill="white" stroke="black" stroke-width="2"/>
+                            <ellipse cx="24" cy="37" rx="5" ry="3" fill="white" stroke="black" stroke-width="2"/>
+                            <circle cx="24" cy="32" r="3" fill="white" stroke="black" stroke-width="2"/>
+                            <!-- Minaret Right -->
+                            <rect x="72" y="40" width="8" height="35" fill="white" stroke="black" stroke-width="2"/>
+                            <ellipse cx="76" cy="37" rx="5" ry="3" fill="white" stroke="black" stroke-width="2"/>
+                            <circle cx="76" cy="32" r="3" fill="white" stroke="black" stroke-width="2"/>
+                            <!-- Main Building -->
+                            <rect x="35" y="47" width="30" height="28" fill="white" stroke="black" stroke-width="2"/>
+                            <!-- Door -->
+                            <path d="M45,60 L45,75 L55,75 L55,60 Q50,55 45,60" fill="white" stroke="black" stroke-width="2"/>
+                            <!-- Crescent on top -->
+                            <path d="M48,25 Q50,20 52,25" stroke="black" stroke-width="2" fill="none"/>
+                            <circle cx="51" cy="22" r="2" fill="white" stroke="black" stroke-width="1.5"/>
+                            <!-- Windows -->
+                            <circle cx="42" cy="55" r="2" fill="black"/>
+                            <circle cx="58" cy="55" r="2" fill="black"/>
+                        </svg>
+                    </div>
+                    <h3 class="event-name">AKAD NIKAH</h3>
+                    <div class="dashed-line"></div>
+                    <p class="event-detail">📅 Jumat, 28 Maret 2026</p>
+                    <p class="event-detail">⏰ 08:00 - 12:00 WIB</p>
+                    <p class="event-detail">📍 Masjid Ittihadul 'Ulum BPA Pagedangan</p>
+                    <p class="event-location">Jl. Biologi Jl.Astrologi No.Blok 1, Pagedangan, Kec. Pagedangan, Kabupaten Tangerang, Banten 15339</p>
+                </div>
+
+                <!-- Countdown -->
+                <div class="countdown-box">
+                    <h3 class="countdown-title">HITUNG MUNDUR</h3>
+                    <div class="countdown" id="countdown">
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="days">00</div>
+                            <div class="countdown-label">Hari</div>
+                        </div>
+                        <div class="countdown-sep">:</div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="hours">00</div>
+                            <div class="countdown-label">Jam</div>
+                        </div>
+                        <div class="countdown-sep">:</div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="minutes">00</div>
+                            <div class="countdown-label">Menit</div>
+                        </div>
+                        <div class="countdown-sep">:</div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="seconds">00</div>
+                            <div class="countdown-label">Detik</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Map -->
+                <div class="map-box">
+                    <div class="map-icon-sketch">
+                        <svg viewBox="0 0 100 100">
+                            <path d="M50,20 Q50,30 42,45 L50,70 L58,45 Q50,30 50,20 Z" fill="white" stroke="black" stroke-width="2"/>
+                            <circle cx="50" cy="30" r="6" fill="black"/>
+                        </svg>
+                    </div>
+                    <p class="map-text">📍 Masjid Ittihadul 'Ulum BPA Pagedangan</p>
+                    <a href="https://maps.app.goo.gl/FcQ2avWEYy9J2ad77" target="_blank" class="map-btn">Buka Peta</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- RSVP Section -->
+        <section class="rsvp-section">
+            <div class="sketch-card">
+                <h2 class="section-title">KONFIRMASI KEHADIRAN</h2>
+                
+                <form class="rsvp-form" id="rsvpForm">
+                    <div class="form-group">
+                        <label>Nama Lengkap</label>
+                        <input type="text" id="name" required placeholder="Masukkan nama Anda">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Kehadiran</label>
+                        <select id="attendance" required>
+                            <option value="">Pilih</option>
+                            <option value="hadir">✓ Hadir</option>
+                            <option value="tidak-hadir">✗ Tidak Hadir</option>
+                            <option value="ragu">? Masih Ragu</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Jumlah Tamu</label>
+                        <input type="number" id="guests" min="1" max="5" value="1" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Ucapan & Doa</label>
+                        <textarea id="message" rows="4" placeholder="Berikan ucapan untuk kami..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Kirim Konfirmasi</button>
+                </form>
+
+                <div class="rsvp-success" id="rsvpSuccess" style="display: none;">
+                    <div class="success-icon">✓</div>
+                    <h3>Terima Kasih!</h3>
+                    <p>Konfirmasi Anda telah tercatat:</p>
+                    <div class="rsvp-summary" id="rsvpSummary"></div>
+                    <p class="copy-instruction">Silakan screenshot atau catat informasi di atas</p>
+                    <button class="btn-another" id="btnAnother">Konfirmasi Lagi</button>
+                </div>
+
+                <!-- List of RSVPs -->
+                <div class="wishes-box">
+                    <h3 class="wishes-title">DAFTAR TAMU</h3>
+                    <div class="rsvp-list" id="rsvpList">
+                        <p class="no-rsvp">Belum ada konfirmasi</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Closing Section -->
+        <section class="closing-section">
+            <div class="sketch-card">
+                <div class="doodle-line">
+                    <svg viewBox="0 0 300 20">
+                        <path d="M0,10 Q30,5 60,10 T120,10 T180,10 T240,10 T300,10" 
+                              stroke="black" stroke-width="1" fill="none"/>
+                        <circle cx="60" cy="10" r="3" fill="black"/>
+                        <circle cx="150" cy="10" r="3" fill="black"/>
+                        <circle cx="240" cy="10" r="3" fill="black"/>
+                    </svg>
+                </div>
+                
+                <p class="closing-text">
+                    Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu.
+                </p>
+                
+                <p class="closing-signature">Wassalamu'alaikum Wr. Wb.</p>
+                
+                <h3 class="closing-names">Zendy & Dilla</h3>
+                
+                <div class="hearts-row">
+                    <span>♥</span>
+                    <span>♥</span>
+                    <span>♥</span>
+                </div>
+
+                <div class="doodle-line">
+                    <svg viewBox="0 0 300 20">
+                        <path d="M0,10 Q30,5 60,10 T120,10 T180,10 T240,10 T300,10" 
+                              stroke="black" stroke-width="1" fill="none"/>
+                        <circle cx="60" cy="10" r="3" fill="black"/>
+                        <circle cx="150" cy="10" r="3" fill="black"/>
+                        <circle cx="240" cy="10" r="3" fill="black"/>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="bgMusic" loop>
+        <source src="assets/wedding-music.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

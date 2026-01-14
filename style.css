@@ -1,0 +1,972 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Kalam', 'Patrick Hand', cursive;
+    background-color: #f5f5f5;
+    color: #000;
+    overflow-x: hidden;
+}
+
+/* Music Toggle */
+.music-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid black;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.music-toggle:hover {
+    transform: scale(1.1) rotate(10deg);
+}
+
+.music-toggle.playing .music-icon {
+    animation: musicBounce 0.5s ease infinite;
+}
+
+@keyframes musicBounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* Cover Section */
+.cover-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: #f5f5f5;
+}
+
+.cover-section.active {
+    display: flex;
+}
+
+.cover-section.hide {
+    display: none;
+}
+
+.card-frame {
+    position: relative;
+    max-width: 400px;
+    width: 100%;
+    min-height: 600px;
+    background: white;
+    padding: 60px 40px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+/* Wavy Borders */
+.wavy-border {
+    position: absolute;
+    pointer-events: none;
+}
+
+.wavy-border.top {
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 30px;
+}
+
+.wavy-border.bottom {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 30px;
+}
+
+.wavy-border.left {
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 30px;
+    height: 100%;
+}
+
+.wavy-border.right {
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 30px;
+    height: 100%;
+}
+
+/* Corner Bows */
+.bow {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    z-index: 10;
+}
+
+.bow.top-left {
+    top: -10px;
+    left: -10px;
+}
+
+.bow.top-right {
+    top: -10px;
+    right: -10px;
+    transform: rotate(90deg);
+}
+
+.bow.bottom-left {
+    bottom: -10px;
+    left: -10px;
+    transform: rotate(-90deg);
+}
+
+.bow.bottom-right {
+    bottom: -10px;
+    right: -10px;
+    transform: rotate(180deg);
+}
+
+.bow svg {
+    animation: bowWiggle 3s ease-in-out infinite;
+}
+
+@keyframes bowWiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
+}
+
+/* Card Content */
+.card-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.save-the-date {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+/* Heart Container */
+.heart-container {
+    position: relative;
+    margin: 30px 0;
+}
+
+.heart-frame {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    display: block;
+    animation: heartPulse 2s ease-in-out infinite;
+}
+
+@keyframes heartPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.hand {
+    animation: handWave 2s ease-in-out infinite;
+}
+
+.hand.left-hand {
+    transform-origin: 20px 120px;
+}
+
+.hand.right-hand {
+    transform-origin: 180px 120px;
+}
+
+@keyframes handWave {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
+}
+
+.date-in-heart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.date-in-heart .day {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.date-in-heart .month {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.date-in-heart .year {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+/* Couple Silhouette */
+.couple-silhouette {
+    margin: 20px 0;
+}
+
+.couple-silhouette svg {
+    width: 200px;
+    height: 150px;
+    margin: 0 auto;
+    display: block;
+}
+
+.groom,
+.bride {
+    animation: figureWiggle 3s ease-in-out infinite;
+}
+
+.bride {
+    animation-delay: 0.5s;
+}
+
+@keyframes figureWiggle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* Couple Names */
+.couple-names {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 20px 0;
+}
+
+/* Open Button */
+.open-btn {
+    margin-top: 30px;
+    padding: 12px 60px;
+    background: white;
+    border: 2px solid black;
+    border-radius: 30px;
+    font-family: 'Kalam', cursive;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: capitalize;
+}
+
+.open-btn:hover {
+    background: black;
+    color: white;
+    transform: scale(1.05);
+}
+
+.open-btn:active {
+    transform: scale(0.95);
+}
+
+/* Main Content */
+.main-content {
+    display: none;
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.main-content.show {
+    display: block;
+    animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Sketch Card */
+.sketch-card {
+    background: white;
+    padding: 40px 30px;
+    margin: 30px 0;
+    border: 2px solid black;
+    box-shadow: 5px 5px 0 rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.sketch-card::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: 5px;
+    bottom: 5px;
+    border: 2px solid black;
+    pointer-events: none;
+}
+
+/* Section Title */
+.section-title {
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Bismillah Section */
+.bismillah-text {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.ayat {
+    font-size: 16px;
+    line-height: 1.8;
+    text-align: center;
+    font-style: italic;
+    margin: 20px 0;
+}
+
+.ayat-ref {
+    text-align: center;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+/* Couple Grid */
+.couple-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 20px;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.person-card {
+    text-align: center;
+}
+
+.person-sketch {
+    margin-bottom: 20px;
+}
+
+.person-sketch svg {
+    width: 100px;
+    height: 120px;
+    animation: sketchFloat 3s ease-in-out infinite;
+}
+
+.person-card:nth-child(1) .person-sketch svg {
+    animation-delay: 0s;
+}
+
+.person-card:nth-child(3) .person-sketch svg {
+    animation-delay: 0.5s;
+}
+
+@keyframes sketchFloat {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-10px) rotate(2deg); }
+}
+
+.person-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 15px 0 5px;
+}
+
+.child-of {
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.parents {
+    font-weight: 700;
+    margin: 5px 0 15px;
+}
+
+.ig-link {
+    display: inline-block;
+    padding: 8px 20px;
+    background: white;
+    border: 2px solid black;
+    border-radius: 20px;
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.ig-link:hover {
+    background: black;
+    color: white;
+}
+
+/* Heart Divider */
+.heart-divider {
+    flex-shrink: 0;
+}
+
+.heart-divider svg {
+    width: 50px;
+    height: 50px;
+    animation: heartBeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.1); }
+    50% { transform: scale(1); }
+    75% { transform: scale(1.15); }
+}
+
+/* Event Box */
+.event-box {
+    background: white;
+    border: 2px solid black;
+    padding: 30px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.event-box.event-single {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.event-icon-sketch {
+    margin: 0 auto 20px;
+}
+
+.event-icon-sketch svg {
+    width: 80px;
+    height: 80px;
+    animation: iconWiggle 2s ease-in-out infinite;
+}
+
+@keyframes iconWiggle {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+}
+
+.event-name {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.dashed-line {
+    height: 2px;
+    background-image: repeating-linear-gradient(
+        to right,
+        black 0,
+        black 10px,
+        transparent 10px,
+        transparent 20px
+    );
+    margin: 15px 0;
+}
+
+.event-detail {
+    font-size: 16px;
+    margin: 8px 0;
+}
+
+.event-location {
+    font-size: 14px;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+/* Countdown */
+.countdown-box {
+    background: black;
+    color: white;
+    padding: 30px;
+    margin: 30px 0;
+    text-align: center;
+}
+
+.countdown-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.countdown-number {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1;
+    min-width: 60px;
+}
+
+.countdown-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+
+.countdown-sep {
+    font-size: 48px;
+    font-weight: 700;
+}
+
+/* Map Box */
+.map-box {
+    background: white;
+    border: 2px solid black;
+    padding: 30px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.map-icon-sketch svg {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    animation: mapBounce 2s ease-in-out infinite;
+}
+
+@keyframes mapBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.map-text {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 15px 0;
+}
+
+.map-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: white;
+    border: 2px solid black;
+    border-radius: 25px;
+    text-decoration: none;
+    color: black;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.map-btn:hover {
+    background: black;
+    color: white;
+}
+
+/* RSVP Form */
+.rsvp-form {
+    margin: 30px 0;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid black;
+    background: white;
+    font-family: 'Kalam', cursive;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background: black;
+    color: white;
+    border: 2px solid black;
+    border-radius: 30px;
+    font-family: 'Kalam', cursive;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: white;
+    color: black;
+    transform: scale(1.02);
+}
+
+.submit-btn:active {
+    transform: scale(0.98);
+}
+
+/* RSVP Success */
+.rsvp-success {
+    text-align: center;
+    padding: 40px 20px;
+    background: #f0fdf4;
+    border: 2px solid #22c55e;
+    border-radius: 15px;
+    margin: 20px 0;
+}
+
+.success-icon {
+    width: 60px;
+    height: 60px;
+    background: #22c55e;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    margin: 0 auto 20px;
+    animation: successPop 0.5s ease;
+}
+
+@keyframes successPop {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.rsvp-success h3 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.rsvp-summary {
+    background: white;
+    border: 2px dashed black;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: left;
+    border-radius: 10px;
+}
+
+.rsvp-summary p {
+    margin: 8px 0;
+    font-size: 16px;
+}
+
+.copy-instruction {
+    font-size: 14px;
+    font-style: italic;
+    color: #666;
+    margin-top: 15px;
+}
+
+.btn-another {
+    margin-top: 20px;
+    padding: 12px 30px;
+    background: white;
+    border: 2px solid black;
+    border-radius: 25px;
+    font-family: 'Kalam', cursive;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-another:hover {
+    background: black;
+    color: white;
+}
+
+/* RSVP List */
+.rsvp-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.rsvp-item {
+    background: white;
+    border: 2px solid black;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.rsvp-item .rsvp-name {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.rsvp-item .rsvp-status {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.rsvp-item .rsvp-status.hadir {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.rsvp-item .rsvp-status.tidak-hadir {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.rsvp-item .rsvp-status.ragu {
+    background: #fef3c7;
+    color: #854d0e;
+}
+
+.rsvp-item .rsvp-guests {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.rsvp-item .rsvp-message {
+    font-size: 14px;
+    font-style: italic;
+    color: #333;
+    padding-top: 8px;
+    border-top: 1px dashed #ddd;
+}
+
+.no-rsvp {
+    text-align: center;
+    padding: 40px 20px;
+    color: #999;
+    font-style: italic;
+}
+
+/* Wishes Box */
+.wishes-box {
+    margin-top: 40px;
+}
+
+.wishes-title {
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+/* Closing Section */
+.closing-section .sketch-card {
+    text-align: center;
+}
+
+.doodle-line {
+    margin: 30px 0;
+}
+
+.doodle-line svg {
+    width: 300px;
+    height: 20px;
+    max-width: 100%;
+}
+
+.closing-text {
+    font-size: 16px;
+    line-height: 1.8;
+    margin: 20px 0;
+}
+
+.closing-signature {
+    font-style: italic;
+    font-size: 18px;
+    margin: 20px 0;
+}
+
+.closing-names {
+    font-size: 36px;
+    font-weight: 700;
+    margin: 20px 0;
+}
+
+.hearts-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 32px;
+    margin: 20px 0;
+}
+
+.hearts-row span {
+    animation: heartPop 1.5s ease-in-out infinite;
+}
+
+.hearts-row span:nth-child(1) { animation-delay: 0s; }
+.hearts-row span:nth-child(2) { animation-delay: 0.3s; }
+.hearts-row span:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes heartPop {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .couple-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .heart-divider {
+        order: 2;
+    }
+
+    .save-the-date {
+        font-size: 20px;
+        letter-spacing: 2px;
+    }
+
+    .heart-frame {
+        width: 180px;
+        height: 180px;
+    }
+
+    .date-in-heart .day {
+        font-size: 40px;
+    }
+
+    .date-in-heart .month {
+        font-size: 30px;
+    }
+
+    .date-in-heart .year {
+        font-size: 24px;
+    }
+
+    .couple-names {
+        font-size: 28px;
+    }
+
+    .section-title {
+        font-size: 28px;
+    }
+
+    .countdown-number {
+        font-size: 36px;
+    }
+
+    .countdown-sep {
+        font-size: 36px;
+    }
+
+    .doodle-line svg {
+        width: 250px;
+    }
+
+    .sketch-card {
+        padding: 30px 20px;
+    }
+
+    .music-toggle {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+
+    .card-frame {
+        padding: 50px 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-frame {
+        padding: 40px 25px;
+    }
+
+    .open-btn {
+        padding: 10px 40px;
+        font-size: 16px;
+    }
+
+    .event-box,
+    .map-box {
+        padding: 20px;
+    }
+}
+
+/* Fade Out Animation */
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
