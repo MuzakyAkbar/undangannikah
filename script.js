@@ -1,10 +1,11 @@
-// Wedding Invitation JavaScript - With RSVP Form
+// Wedding Invitation JavaScript - With Photo Cover
 
 document.addEventListener('DOMContentLoaded', function() {
     // Elements
-    const coverSection = document.getElementById('coverSection');
+    const animatedOpening = document.getElementById('animatedOpening');
     const mainContent = document.getElementById('mainContent');
     const openInvitation = document.getElementById('openInvitation');
+    const closeInvitation = document.getElementById('closeInvitation');
     const musicToggle = document.getElementById('musicToggle');
     const bgMusic = document.getElementById('bgMusic');
 
@@ -13,23 +14,55 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Open Invitation
     openInvitation.addEventListener('click', function() {
-        // Add animation
-        coverSection.style.animation = 'fadeOut 0.8s ease-out forwards';
+        // 1. Hide cover
+        animatedOpening.classList.remove('active');
+        animatedOpening.style.display = 'none';
         
+        // 2. Show main content (BUG FIX: Explicitly display block first)
+        mainContent.style.display = 'block';
+        
+        // 3. Trigger animation with slight delay to allow display change to register
         setTimeout(() => {
-            coverSection.classList.remove('active');
-            coverSection.style.display = 'none';
             mainContent.classList.add('show');
-            
-            // Auto play music
-            playMusic();
-            
-            // Start countdown
-            startCountdown();
-            
-            // Smooth scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }, 800);
+        }, 10);
+        
+        // Show close button
+        closeInvitation.style.display = 'block';
+        
+        // Auto play music
+        playMusic();
+        
+        // Start countdown
+        startCountdown();
+        
+        // Smooth scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Close Invitation - Back to Cover
+    closeInvitation.addEventListener('click', function() {
+        // 1. Hide main content animation
+        mainContent.classList.remove('show');
+        
+        // 2. Hide close button
+        closeInvitation.style.display = 'none';
+        
+        // 3. Show cover
+        animatedOpening.style.display = 'flex';
+        // Force reflow
+        void animatedOpening.offsetWidth;
+        animatedOpening.classList.add('active');
+        
+        // 4. Pause music
+        pauseMusic();
+        
+        // 5. Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        
+        // 6. After animation fade out, set main display none
+        setTimeout(() => {
+            mainContent.style.display = 'none';
+        }, 500);
     });
 
     // Music Toggle
@@ -57,18 +90,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Countdown Timer
     function startCountdown() {
+        // Prevent multiple intervals
+        if (window.countdownInterval) clearInterval(window.countdownInterval);
+        
         const weddingDate = new Date('2026-03-28T08:00:00').getTime();
         
-        const countdown = setInterval(function() {
+        window.countdownInterval = setInterval(function() {
             const now = new Date().getTime();
             const distance = weddingDate - now;
 
             if (distance < 0) {
-                clearInterval(countdown);
-                document.getElementById('days').textContent = '00';
-                document.getElementById('hours').textContent = '00';
-                document.getElementById('minutes').textContent = '00';
-                document.getElementById('seconds').textContent = '00';
+                clearInterval(window.countdownInterval);
+                if(document.getElementById('days')) {
+                    document.getElementById('days').textContent = '00';
+                    document.getElementById('hours').textContent = '00';
+                    document.getElementById('minutes').textContent = '00';
+                    document.getElementById('seconds').textContent = '00';
+                }
                 return;
             }
 
@@ -77,10 +115,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.getElementById('days').textContent = String(days).padStart(2, '0');
-            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            if(document.getElementById('days')) {
+                document.getElementById('days').textContent = String(days).padStart(2, '0');
+                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            }
         }, 1000);
     }
 
@@ -90,6 +130,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const rsvpSummary = document.getElementById('rsvpSummary');
     const rsvpList = document.getElementById('rsvpList');
     const btnAnother = document.getElementById('btnAnother');
+    const viewAllBtn = document.getElementById('viewAllBtn');
+    const allRsvpsModal = document.getElementById('allRsvpsModal');
+    const closeModal = document.getElementById('closeModal');
+    const allRsvpsList = document.getElementById('allRsvpsList');
 
     // Load existing RSVPs
     loadRSVPs();
@@ -126,7 +170,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 statusClass: statusClass,
                 guests: guests,
                 message: message,
-                timestamp: new Date().toLocaleString('id-ID')
+                timestamp: new Date().toLocaleString('id-ID', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                })
             };
 
             // Save to localStorage
@@ -165,6 +215,33 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // View All Button
+    if (viewAllBtn) {
+        viewAllBtn.addEventListener('click', function() {
+            loadAllRSVPs();
+            allRsvpsModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    }
+
+    // Close Modal
+    if (closeModal) {
+        closeModal.addEventListener('click', function() {
+            allRsvpsModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+    }
+
+    // Close modal when clicking outside
+    if (allRsvpsModal) {
+        allRsvpsModal.addEventListener('click', function(e) {
+            if (e.target === allRsvpsModal) {
+                allRsvpsModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    }
+
     function saveRSVP(rsvp) {
         let rsvps = JSON.parse(localStorage.getItem('wedding_rsvps') || '[]');
         rsvps.unshift(rsvp);
@@ -175,18 +252,55 @@ document.addEventListener('DOMContentLoaded', function() {
         let rsvps = JSON.parse(localStorage.getItem('wedding_rsvps') || '[]');
         
         if (rsvps.length === 0) {
-            rsvpList.innerHTML = '<p class="no-rsvp">Belum ada konfirmasi</p>';
+            if(rsvpList) rsvpList.innerHTML = '<p class="no-rsvp">Belum ada doa dan harapan</p>';
+            if(viewAllBtn) viewAllBtn.style.display = 'none';
             return;
         }
 
-        rsvpList.innerHTML = rsvps.map(rsvp => `
-            <div class="rsvp-item">
-                <div class="rsvp-name">${rsvp.name}</div>
-                <span class="rsvp-status ${rsvp.statusClass}">${rsvp.statusText}</span>
-                <div class="rsvp-guests">👥 ${rsvp.guests} orang</div>
-                ${rsvp.message ? `<div class="rsvp-message">"${rsvp.message}"</div>` : ''}
-            </div>
-        `).join('');
+        // Show only first 5
+        const recentRsvps = rsvps.slice(0, 5);
+        
+        if(rsvpList) {
+            rsvpList.innerHTML = recentRsvps.map(rsvp => `
+                <div class="rsvp-item">
+                    <div class="rsvp-name">${rsvp.name}</div>
+                    <span class="rsvp-status ${rsvp.statusClass}">${rsvp.statusText}</span>
+                    <div class="rsvp-guests">👥 ${rsvp.guests} orang</div>
+                    ${rsvp.message ? `<div class="rsvp-message">"${rsvp.message}"</div>` : ''}
+                    <div style="font-size: 12px; color: #999; margin-top: 8px;">${rsvp.timestamp}</div>
+                </div>
+            `).join('');
+        }
+
+        // Show "View All" button if more than 5
+        if (viewAllBtn) {
+            if (rsvps.length > 5) {
+                viewAllBtn.style.display = 'block';
+            } else {
+                viewAllBtn.style.display = 'none';
+            }
+        }
+    }
+
+    function loadAllRSVPs() {
+        let rsvps = JSON.parse(localStorage.getItem('wedding_rsvps') || '[]');
+        
+        if (rsvps.length === 0) {
+            if(allRsvpsList) allRsvpsList.innerHTML = '<p class="no-rsvp">Belum ada doa dan harapan</p>';
+            return;
+        }
+
+        if(allRsvpsList) {
+            allRsvpsList.innerHTML = rsvps.map(rsvp => `
+                <div class="rsvp-item">
+                    <div class="rsvp-name">${rsvp.name}</div>
+                    <span class="rsvp-status ${rsvp.statusClass}">${rsvp.statusText}</span>
+                    <div class="rsvp-guests">👥 ${rsvp.guests} orang</div>
+                    ${rsvp.message ? `<div class="rsvp-message">"${rsvp.message}"</div>` : ''}
+                    <div style="font-size: 12px; color: #999; margin-top: 8px;">${rsvp.timestamp}</div>
+                </div>
+            `).join('');
+        }
     }
 
     function createConfetti() {
@@ -246,32 +360,99 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Observe all sections
     document.querySelectorAll('section').forEach(section => {
-        section.style.opacity = '0';
-        observer.observe(section);
+        // Skip animated opening since it has its own logic
+        if (section.id !== 'animatedOpening') {
+            section.style.opacity = '0';
+            observer.observe(section);
+        }
     });
 
-    // Add CSS animations
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes fadeOut {
-            to {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-        }
+    // Copy Account Number Function
+    const copyButtons = document.querySelectorAll('.copy-btn');
+    
+    copyButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const accountNumber = this.getAttribute('data-account');
+            const bankName = this.getAttribute('data-bank');
+            
+            // Copy to clipboard
+            navigator.clipboard.writeText(accountNumber).then(() => {
+                // Change button text temporarily
+                const originalHTML = this.innerHTML;
+                this.innerHTML = '<span class="copy-icon">✓</span> Tersalin!';
+                this.classList.add('copied');
+                
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    this.innerHTML = originalHTML;
+                    this.classList.remove('copied');
+                }, 2000);
+                
+                // Show notification
+                showNotification(`Nomor rekening ${bankName} berhasil disalin!`);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+                showNotification('Gagal menyalin nomor rekening');
+            });
+        });
+    });
 
-        @keyframes fadeInUp {
+    // Show Notification Function
+    function showNotification(message) {
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #22c55e;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-family: 'Kalam', cursive;
+            font-weight: 700;
+            z-index: 10000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            animation: slideDown 0.3s ease;
+        `;
+        notification.textContent = message;
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.style.animation = 'slideUp 0.3s ease';
+            setTimeout(() => {
+                notification.remove();
+            }, 300);
+        }, 2000);
+    }
+
+    // Add notification animations
+    const notifStyle = document.createElement('style');
+    notifStyle.textContent = `
+        @keyframes slideDown {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateX(-50%) translateY(-20px);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-20px);
             }
         }
     `;
-    document.head.appendChild(style);
+    document.head.appendChild(notifStyle);
 
     // Console message
     console.log('%c💑 Selamat Menempuh Hidup Baru! 💑', 'font-size: 20px; font-weight: bold;');
