@@ -397,9 +397,13 @@
                     
                     <div class="form-group">
                         <label>Jumlah Tamu *</label>
-                        <input type="number" id="guests" min="1" max="5" value="1" required>
-                        <small class="form-hint">Maksimal 5 orang</small>
+                        <select id="guests" required>
+                            <option value="1">1 Orang</option>
+                            <option value="2">2 Orang</option>
+                        </select>
+                        <span class="form-hint">Maksimal 2 orang</span>
                     </div>
+
                     
                     <div class="form-group">
                         <label>Ucapan & Doa</label>
