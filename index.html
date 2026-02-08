@@ -10,7 +10,7 @@
 <body>
 
     <button class="music-toggle" id="musicToggle">
-        <span class="music-icon">♪</span>
+        <svg class="music-icon" viewBox="0 0 24 24" width="20" height="20"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" fill="currentColor" stroke="currentColor" stroke-width="0.5"/></svg>
     </button>
 
     <button class="close-invitation" id="closeInvitation" style="display: none;">
@@ -53,36 +53,6 @@
         </div>
 
         <div class="opening-container">
-            <div class="photo-reveal">
-                <div class="photo-frame bride-frame">
-                    <div class="frame-border">
-                        <img src="assets/MempelaiPria.jpeg" alt="Mempelai Pria" class="couple-photo">
-                        <div class="frame-corner tl"></div>
-                        <div class="frame-corner tr"></div>
-                        <div class="frame-corner bl"></div>
-                        <div class="frame-corner br"></div>
-                    </div>
-                    <div class="photo-label">Mempelai Pria</div>
-                </div>
-                
-                <div class="heart-connector">
-                    <svg viewBox="0 0 100 100">
-                        <path d="M50,85 Q20,60 20,40 Q20,20 35,20 Q45,20 50,30 Q55,20 65,20 Q80,20 80,40 Q80,60 50,85" 
-                              fill="white" stroke="black" stroke-width="3"/>
-                    </svg>
-                </div>
-                
-                <div class="photo-frame groom-frame">
-                    <div class="frame-border">
-                        <img src="assets/MempelaiWanita.jpeg" alt="Mempelai Wanita" class="couple-photo">
-                        <div class="frame-corner tl"></div>
-                        <div class="frame-corner tr"></div>
-                        <div class="frame-corner bl"></div>
-                        <div class="frame-corner br"></div>
-                    </div>
-                    <div class="photo-label">Mempelai Wanita</div>
-                </div>
-            </div>
             
             <div class="opening-text">
                 <h1 class="opening-title">THE WEDDING OF</h1>
@@ -92,7 +62,7 @@
                 </div>
                 <p class="opening-date">28 • 03 • 2026</p>
                 <p class="opening-sub">Kepada Bapak/Ibu/Saudara/i</p>
-                <div class="guest-name-box">Tamu Undangan</div>
+                <div class="guest-name-box" id="guestName">Tamu Undangan</div>
                 <button class="open-btn" id="openInvitation">Buka Undangan</button>
             </div>
         </div>
@@ -106,267 +76,311 @@
                 <p class="bismillah-text">Assalamu'alaikum Warahmatullahi Wabarakatuh</p>
                 
                 <p class="opening-text">
-                    Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami:
+                    Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami.
                 </p>
-            </div>
-        </section>
 
-        <section class="mempelai-section">
-            <div class="sketch-card">
-                <h2 class="section-title">MEMPELAI</h2>
-                
-                <div class="couple-grid">
-                    <div class="person-card">
-                        <div class="photo-frame-main">
-                            <div class="classic-frame">
-                                <img src="assets/MempelaiPria.jpeg" alt="Mempelai Pria" class="mempelai-photo">
-                                <div class="frame-ornament tl"></div>
-                                <div class="frame-ornament tr"></div>
-                                <div class="frame-ornament bl"></div>
-                                <div class="frame-ornament br"></div>
-                                <div class="frame-edge top"></div>
-                                <div class="frame-edge bottom"></div>
-                                <div class="frame-edge left"></div>
-                                <div class="frame-edge right"></div>
+                <div class="sketch-card">
+                    <h2 class="section-title">MEMPELAI</h2>
+                    
+                    <div class="couple-grid">
+                        <div class="person-card">
+                            <div class="photo-frame-main">
+                                <div class="classic-frame">
+                                    <img src="assets/MempelaiPria.jpeg" alt="Mempelai Pria" class="mempelai-photo">
+                                    <div class="frame-ornament tl"></div>
+                                    <div class="frame-ornament tr"></div>
+                                    <div class="frame-ornament bl"></div>
+                                    <div class="frame-ornament br"></div>
+                                    <div class="frame-edge top"></div>
+                                    <div class="frame-edge bottom"></div>
+                                    <div class="frame-edge left"></div>
+                                    <div class="frame-edge right"></div>
+                                </div>
                             </div>
+                            <h3>Zendy Tri Pamungkas</h3>
+                            <p class="child-of">Putra dari</p>
+                            <p class="parents">Bapak Sutarno<br>& Ibu Sri Hartatik</p>
+                            <a href="https://www.instagram.com/mass.zenn?igsh=YXNudXFleGgxNjA0" target="_blank" class="ig-link">@mass.zenn</a>
                         </div>
-                        <h3>Zendy Tri Pamungkas</h3>
-                        <p class="child-of">Putra dari</p>
-                        <p class="parents">Bapak ...<br>& Ibu ...</p>
-                        <a href="https://www.instagram.com/mass.zenn" target="_blank" class="ig-link">📷 @zen_dy03</a>
-                    </div>
 
-                    <div class="heart-divider">
-                        <svg viewBox="0 0 100 100">
-                            <path d="M50,85 Q20,60 20,40 Q20,20 35,20 Q45,20 50,30 Q55,20 65,20 Q80,20 80,40 Q80,60 50,85" 
-                                  fill="white" stroke="black" stroke-width="3"/>
-                            <text x="50" y="50" text-anchor="middle" font-size="24" font-weight="700">&</text>
-                        </svg>
-                    </div>
+                        <div class="heart-divider">
+                            <svg viewBox="0 0 100 100">
+                                <path d="M50,85 Q20,60 20,40 Q20,20 35,20 Q45,20 50,30 Q55,20 65,20 Q80,20 80,40 Q80,60 50,85" 
+                                    fill="white" stroke="black" stroke-width="3"/>
+                            </svg>
+                        </div>
 
-                    <div class="person-card">
-                        <div class="photo-frame-main">
-                            <div class="classic-frame">
-                                <img src="assets/MempelaiWanita.jpeg" alt="Mempelai Wanita" class="mempelai-photo">
-                                <div class="frame-ornament tl"></div>
-                                <div class="frame-ornament tr"></div>
-                                <div class="frame-ornament bl"></div>
-                                <div class="frame-ornament br"></div>
-                                <div class="frame-edge top"></div>
-                                <div class="frame-edge bottom"></div>
-                                <div class="frame-edge left"></div>
-                                <div class="frame-edge right"></div>
+                        <div class="person-card">
+                            <div class="photo-frame-main">
+                                <div class="classic-frame">
+                                    <img src="assets/MempelaiWanita.jpeg" alt="Mempelai Wanita" class="mempelai-photo">
+                                    <div class="frame-ornament tl"></div>
+                                    <div class="frame-ornament tr"></div>
+                                    <div class="frame-ornament bl"></div>
+                                    <div class="frame-ornament br"></div>
+                                    <div class="frame-edge top"></div>
+                                    <div class="frame-edge bottom"></div>
+                                    <div class="frame-edge left"></div>
+                                    <div class="frame-edge right"></div>
+                                </div>
                             </div>
+                            <h3>Dilla Nur Octaviana</h3>
+                            <p class="child-of">Putri dari</p>
+                            <p class="parents">Bapak Madnur<br>& Ibu Sri Mulyani</p>
+                            <a href="https://www.instagram.com/octdilla?igsh=YWZvdGJ5aDE0Z294" target="_blank" class="ig-link">@octdilla</a>
                         </div>
-                        <h3>Dilla Nur Octaviana</h3>
-                        <p class="child-of">Putri dari</p>
-                        <p class="parents">Bapak ...<br>& Ibu ...</p>
-                        <a href="https://www.instagram.com/octadilla" target="_blank" class="ig-link">📷 @zazkiaadila</a>
                     </div>
                 </div>
-
-                <div class="ayat-section">
-                    <p class="ayat arabic-text" dir="rtl">
-                        وَمِنْ ءَايَٰتِهِۦٓ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَٰجًا لِّتَسْكُنُوٓا۟ إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِى ذَٰلِكَ لَءَايَٰتٍ لِّقَوْمٍ يَتَفَكَّرُونَ
-                    </p>
-                    <p class="ayat-translation">
+                
+                <!-- AYAT AL-QUR'AN DIPINDAHKAN KE SINI (SETELAH SALAM) -->
+                <div class="ayat-container">
+                    
+                    <svg class="heart-icon-bw" viewBox="0 0 100 100" width="50" height="50">
+                        <path d="M50,85 Q20,60 20,40 Q20,20 35,20 Q45,20 50,30 Q55,20 65,20 Q80,20 80,40 Q80,60 50,85" 
+                              fill="white" stroke="black" stroke-width="3"/>
+                    </svg>
+                    
+                    
+                    <p class="ayat-text arabic-text">وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةً ۗاِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ</p>
+                    
+                    
+                    <p class="ayat-meaning">
                         "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."
                     </p>
-                    <p class="ayat-ref">(QS. Ar-Rum: 21)</p>
+                    
+                    <p class="ayat-source">(QS. Ar-Rum: 21)</p>
                 </div>
             </div>
         </section>
 
+        <!-- EVENT SECTION - 2 CARDS SEJAJAR -->
         <section class="event-section">
             <div class="sketch-card">
-                <h2 class="section-title">AKAD NIKAH</h2>
+                <h2 class="section-title">WAKTU & TEMPAT</h2>
                 
-                <div class="event-icon-sketch">
-                    <svg viewBox="0 0 100 100">
-                        <rect x="20" y="25" width="60" height="65" fill="white" stroke="black" stroke-width="2" rx="3"/>
-                        <rect x="20" y="20" width="60" height="10" fill="black"/>
-                        <line x1="35" y1="20" x2="35" y2="15" stroke="black" stroke-width="3"/>
-                        <line x1="65" y1="20" x2="65" y2="15" stroke="black" stroke-width="3"/>
-                        <line x1="30" y1="45" x2="70" y2="45" stroke="black" stroke-width="1.5"/>
-                        <line x1="30" y1="60" x2="55" y2="60" stroke="black" stroke-width="1.5"/>
-                        <line x1="30" y1="75" x2="65" y2="75" stroke="black" stroke-width="1.5"/>
-                    </svg>
-                </div>
-
-                <div class="event-details">
-                    <div class="detail-item">
-                        <div class="detail-emoji">📅</div>
-                        <div class="detail-text">
-                            <strong>Jumat</strong><br>
-                            28 Maret 2026
+                <div class="event-cards-container">
+                    <!-- AKAD NIKAH CARD -->
+                    <div class="event-card">
+                        <h3 class="event-card-title">AKAD NIKAH</h3>
+                        
+                        <div class="event-details-card">
+                            <div class="detail-item">
+                                <svg class="detail-icon" viewBox="0 0 100 100" width="30" height="30"><rect x="20" y="30" width="60" height="55" rx="3" fill="white" stroke="black" stroke-width="3"/><rect x="25" y="25" width="50" height="8" rx="4" fill="black"/><circle cx="35" cy="25" r="3" fill="white"/><circle cx="65" cy="25" r="3" fill="white"/><line x1="30" y1="45" x2="70" y2="45" stroke="black" stroke-width="2"/></svg>
+                                <div class="detail-text">
+                                    <strong>Sabtu</strong><br>
+                                    28 Maret 2026
+                                </div>
+                            </div>
+                            
+                            <div class="detail-item">
+                                <svg class="detail-icon" viewBox="0 0 100 100" width="30" height="30"><circle cx="50" cy="50" r="40" fill="white" stroke="black" stroke-width="3"/><circle cx="50" cy="50" r="3" fill="black"/><line x1="50" y1="50" x2="50" y2="25" stroke="black" stroke-width="3" stroke-linecap="round"/><line x1="50" y1="50" x2="70" y2="50" stroke="black" stroke-width="2.5" stroke-linecap="round"/></svg>
+                                <div class="detail-text">
+                                    <strong>08:00 - 10:00</strong><br>
+                                    Waktu Indonesia Barat
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="detail-item">
-                        <div class="detail-emoji">⏰</div>
-                        <div class="detail-text">
-                            <strong>08:00 - 12:00</strong><br>
-                            Waktu Indonesia Barat
+                    <!-- RESEPSI CARD -->
+                    <div class="event-card">
+                        <h3 class="event-card-title">RESEPSI</h3>
+                        
+                        <div class="event-details-card">
+                            <div class="detail-item">
+                                <svg class="detail-icon" viewBox="0 0 100 100" width="30" height="30"><rect x="20" y="30" width="60" height="55" rx="3" fill="white" stroke="black" stroke-width="3"/><rect x="25" y="25" width="50" height="8" rx="4" fill="black"/><circle cx="35" cy="25" r="3" fill="white"/><circle cx="65" cy="25" r="3" fill="white"/><line x1="30" y1="45" x2="70" y2="45" stroke="black" stroke-width="2"/></svg>
+                                <div class="detail-text">
+                                    <strong>Sabtu</strong><br>
+                                    28 Maret 2026
+                                </div>
+                            </div>
+                            
+                            <div class="detail-item">
+                                <svg class="detail-icon" viewBox="0 0 100 100" width="30" height="30"><circle cx="50" cy="50" r="40" fill="white" stroke="black" stroke-width="3"/><circle cx="50" cy="50" r="3" fill="black"/><line x1="50" y1="50" x2="50" y2="25" stroke="black" stroke-width="3" stroke-linecap="round"/><line x1="50" y1="50" x2="70" y2="50" stroke="black" stroke-width="2.5" stroke-linecap="round"/></svg>
+                                <div class="detail-text">
+                                    <strong>10:00 - 13:00</strong><br>
+                                    Waktu Indonesia Barat
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
+                
                 <div class="dashed-line"></div>
-
+                
                 <div class="mosque-illustration">
-                    <svg viewBox="0 0 200 150" class="mosque-svg">
-                        <rect x="50" y="90" width="100" height="50" fill="white" stroke="black" stroke-width="2"/>
+                    <svg class="mosque-svg" viewBox="0 0 200 150">
+                        <!-- Base -->
+                        <rect x="40" y="90" width="120" height="60" fill="white" stroke="black" stroke-width="2"/>
                         
-                        <ellipse cx="100" cy="75" rx="30" ry="20" fill="white" stroke="black" stroke-width="2"/>
-                        <path d="M70,75 Q100,60 130,75" fill="white" stroke="black" stroke-width="2"/>
+                        <!-- Main Dome -->
+                        <ellipse cx="100" cy="70" rx="35" ry="25" fill="white" stroke="black" stroke-width="2"/>
+                        <line x1="100" y1="45" x2="100" y2="30" stroke="black" stroke-width="2"/>
+                        <circle cx="100" cy="30" r="4" fill="black"/>
+                        <path d="M96,26 Q100,20 104,26" fill="none" stroke="black" stroke-width="2"/>
                         
-                        <path d="M95,55 Q100,45 105,55 Q102,50 95,55" fill="black"/>
+                        <!-- Side Domes -->
+                        <ellipse cx="60" cy="85" rx="20" ry="15" fill="white" stroke="black" stroke-width="2"/>
+                        <ellipse cx="140" cy="85" rx="20" ry="15" fill="white" stroke="black" stroke-width="2"/>
                         
-                        <rect x="30" y="60" width="15" height="80" fill="white" stroke="black" stroke-width="2"/>
-                        <circle cx="37.5" cy="55" r="8" fill="white" stroke="black" stroke-width="2"/>
-                        <path d="M32,47 Q37.5,42 43,47" fill="black"/>
+                        <!-- Minarets -->
+                        <rect x="25" y="60" width="15" height="60" fill="white" stroke="black" stroke-width="2"/>
+                        <rect x="160" y="60" width="15" height="60" fill="white" stroke="black" stroke-width="2"/>
+                        <ellipse cx="32.5" cy="60" rx="7.5" ry="8" fill="white" stroke="black" stroke-width="2"/>
+                        <ellipse cx="167.5" cy="60" rx="7.5" ry="8" fill="white" stroke="black" stroke-width="2"/>
                         
-                        <rect x="155" y="60" width="15" height="80" fill="white" stroke="black" stroke-width="2"/>
-                        <circle cx="162.5" cy="55" r="8" fill="white" stroke="black" stroke-width="2"/>
-                        <path d="M157,47 Q162.5,42 168,47" fill="black"/>
+                        <!-- Windows and Door -->
+                        <rect x="90" y="110" width="20" height="30" rx="10" fill="black" stroke="black" stroke-width="2"/>
+                        <circle cx="100" cy="125" r="3" fill="white"/>
                         
-                        <path d="M85,110 Q85,100 100,100 Q115,100 115,110 L115,140 L85,140 Z" fill="white" stroke="black" stroke-width="2"/>
-                        
-                        <circle cx="70" cy="105" r="5" fill="white" stroke="black" stroke-width="1.5"/>
-                        <circle cx="130" cy="105" r="5" fill="white" stroke="black" stroke-width="1.5"/>
+                        <rect x="55" y="105" width="15" height="20" rx="7" fill="white" stroke="black" stroke-width="1.5"/>
+                        <rect x="130" y="105" width="15" height="20" rx="7" fill="white" stroke="black" stroke-width="1.5"/>
                     </svg>
                 </div>
-
-                <h3 class="location-name">📍 Masjid Ittihadul 'Ulum BPA Pagedangan</h3>
-                <p class="location-address">
-                    Jl. Biologi Jl.Astrologi No.Blok 1, Pagedangan,<br>
-                    Kec. Pagedangan, Kabupaten Tangerang, Banten 15339
-                </p>
                 
-                <a href="https://maps.app.goo.gl/FcQ2avWEYy9J2ad77" target="_blank" class="map-btn">
-                    <svg class="btn-icon" viewBox="0 0 24 24" width="20" height="20">
-                        <path d="M12,2 C8.13,2 5,5.13 5,9 C5,14.25 12,22 12,22 C12,22 19,14.25 19,9 C19,5.13 15.87,2 12,2 Z M12,11.5 C10.62,11.5 9.5,10.38 9.5,9 C9.5,7.62 10.62,6.5 12,6.5 C13.38,6.5 14.5,7.62 14.5,9 C14.5,10.38 13.38,11.5 12,11.5 Z" fill="currentColor"/>
-                    </svg>
-                    Buka di Google Maps
-                </a>
-            </div>
-        </section>
+                <p class="location-name">Masjid Ittihadul 'Ulum BPA Pagedangan</p>
+                <p class="location-address">Jl. Biologi Jl.Astrologi No.Blok 1, Pagedangan,<br>Kec. Pagedangan, Kabupaten Tangerang, Banten 15339</p>
+                
+                <div class="denah-lokasi">
+                    <img src="assets/DenahLokasi.jpeg" alt="Denah Lokasi Acara" class="denah-image">
+                </div>
 
-        <section class="countdown-section">
-            <div class="sketch-card">
-                <h2 class="section-title">HITUNG MUNDUR</h2>
+                <a href="https://maps.google.com/?q=Masjid+Ittihadul+Ulum+BPA+Pagedangan" target="_blank" class="map-btn">
+                    <svg class="btn-icon" viewBox="0 0 24 24" width="20" height="20"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="black" stroke="black" stroke-width="0.5"/></svg> Buka di Google Maps
+                </a>
+                
+                <div class="dashed-line"></div>
                 
                 <div class="countdown-box">
-                    <div class="countdown" id="countdown">
+                    <h3 style="font-size: 24px; margin-bottom: 15px;">HITUNG MUNDUR</h3>
+                    <p style="font-size: 16px; margin-bottom: 20px; color: #666;">Menuju hari bahagia kami</p>
+                    
+                    <div class="countdown">
                         <div class="countdown-item">
-                            <div class="countdown-number" id="days">00</div>
-                            <div class="countdown-label">Hari</div>
+                            <span class="countdown-number" id="days">00</span>
+                            <span class="countdown-label">HARI</span>
                         </div>
-                        <div class="countdown-sep">:</div>
+                        <span class="countdown-sep">:</span>
                         <div class="countdown-item">
-                            <div class="countdown-number" id="hours">00</div>
-                            <div class="countdown-label">Jam</div>
+                            <span class="countdown-number" id="hours">00</span>
+                            <span class="countdown-label">JAM</span>
                         </div>
-                        <div class="countdown-sep">:</div>
+                        <span class="countdown-sep">:</span>
                         <div class="countdown-item">
-                            <div class="countdown-number" id="minutes">00</div>
-                            <div class="countdown-label">Menit</div>
+                            <span class="countdown-number" id="minutes">00</span>
+                            <span class="countdown-label">MENIT</span>
                         </div>
-                        <div class="countdown-sep">:</div>
+                        <span class="countdown-sep">:</span>
                         <div class="countdown-item">
-                            <div class="countdown-number" id="seconds">00</div>
-                            <div class="countdown-label">Detik</div>
+                            <span class="countdown-number" id="seconds">00</span>
+                            <span class="countdown-label">DETIK</span>
                         </div>
                     </div>
                 </div>
-                
-                <p class="countdown-message">Menuju hari bahagia kami 💑</p>
             </div>
         </section>
 
         <section class="gift-section">
             <div class="sketch-card">
-                <h2 class="section-title">KIRIM HADIAH</h2>
+                <h2 class="section-title">GIFT</h2>
                 
                 <p class="gift-intro">
-                    Doa restu Anda adalah hadiah terindah bagi kami. Namun, jika memberi adalah ungkapan tanda kasih, Anda dapat mengirimkan melalui:
+                    Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika memberi adalah ungkapan tanda kasih, Anda dapat memberi kado melalui:
                 </p>
                 
                 <div class="gift-options">
-                    <div class="gift-card bank-card">
+                    <!-- Amplop Digital -->
+                    <div class="gift-card">
                         <div class="gift-icon">
-                            <svg viewBox="0 0 100 80" class="atm-icon">
-                                <rect x="5" y="10" width="90" height="60" rx="5" fill="white" stroke="black" stroke-width="2"/>
-                                <rect x="5" y="10" width="90" height="15" fill="black"/>
-                                <rect x="15" y="35" width="15" height="12" rx="2" fill="#FFD700" stroke="black" stroke-width="1"/>
-                                <line x1="17" y1="37" x2="17" y2="45" stroke="black" stroke-width="0.5"/>
-                                <line x1="20" y1="37" x2="20" y2="45" stroke="black" stroke-width="0.5"/>
-                                <line x1="23" y1="37" x2="23" y2="45" stroke="black" stroke-width="0.5"/>
-                                <line x1="26" y1="37" x2="26" y2="45" stroke="black" stroke-width="0.5"/>
-                                <text x="15" y="58" font-size="6" font-weight="600">•••• •••• •••• ••••</text>
-                                <circle cx="80" cy="55" r="8" fill="none" stroke="black" stroke-width="1.5"/>
-                                <circle cx="85" cy="55" r="8" fill="none" stroke="black" stroke-width="1.5"/>
+                            <svg class="gift-icon-svg" viewBox="0 0 100 100">
+                                <!-- Envelope -->
+                                <rect x="15" y="35" width="70" height="45" rx="3" fill="white" stroke="black" stroke-width="2"/>
+                                <path d="M15,35 L50,60 L85,35" fill="white" stroke="black" stroke-width="2"/>
+                                <line x1="15" y1="80" x2="40" y2="60" stroke="black" stroke-width="2"/>
+                                <line x1="85" y1="80" x2="60" y2="60" stroke="black" stroke-width="2"/>
+                                <!-- Money symbol -->
+                                <text x="50" y="58" text-anchor="middle" font-size="20" font-weight="700" fill="black"></text>
                             </svg>
                         </div>
-                        <h3 class="gift-title">Transfer Bank</h3>
+                        <h3 class="gift-title">Amplop Digital</h3>
+                        <p class="gift-desc">
+                            Doa restu Anda merupakan karunia terindah bagi kami. Namun jika memberi adalah ungkapan tanda kasih, Anda dapat memberi kado secara cashless.
+                        </p>
                         
                         <div class="bank-info">
                             <div class="bank-item">
                                 <div class="bank-logo">BCA</div>
                                 <div class="bank-details">
-                                    <p class="account-number">1234567890</p>
-                                    <p class="account-name">a.n. Zendy Prasetya</p>
+                                    <p class="bank-name">Bank Central Asia</p>
+                                    <p class="account-number">8015637991</p>
+                                    <p class="account-name">DILLA NUR OCTAVIANA</p>
                                 </div>
                             </div>
-                            
-                            <button class="copy-btn" data-account="1234567890" data-bank="BCA">
-                                <span class="copy-icon">📋</span> Salin Rekening
-                            </button>
                         </div>
                         
-                        <div class="bank-info">
-                            <div class="bank-item">
-                                <div class="bank-logo">Mandiri</div>
-                                <div class="bank-details">
-                                    <p class="account-number">0987654321</p>
-                                    <p class="account-name">a.n. Dilla Nur Octaviana</p>
-                                </div>
-                            </div>
-                            
-                            <button class="copy-btn" data-account="0987654321" data-bank="Mandiri">
-                                <span class="copy-icon">📋</span> Salin Rekening
-                            </button>
-                        </div>
+                        <button class="copy-btn" data-account="8015637991" data-bank="BCA">
+                            <span class="copy-icon"></span> Salin Rekening
+                        </button>
                     </div>
-
-                    <div class="gift-card whatsapp-card">
+                    
+                    <!-- Kirim Hadiah Langsung -->
+                    <div class="gift-card">
                         <div class="gift-icon">
-                            <svg viewBox="0 0 100 100" class="gift-icon-svg">
-                                <rect x="20" y="45" width="60" height="45" fill="white" stroke="black" stroke-width="2"/>
-                                <rect x="20" y="35" width="60" height="15" fill="white" stroke="black" stroke-width="2"/>
-                                <rect x="47" y="35" width="6" height="55" fill="black"/>
-                                <rect x="20" y="40" width="60" height="6" fill="black"/>
-                                <ellipse cx="35" cy="30" rx="8" ry="5" fill="black"/>
-                                <ellipse cx="65" cy="30" rx="8" ry="5" fill="black"/>
-                                <circle cx="50" cy="30" r="4" fill="black"/>
-                                <path d="M30,60 L32,58 L34,60 L32,63 Z" fill="#FF69B4"/>
-                                <path d="M66,70 L68,68 L70,70 L68,73 Z" fill="#FF69B4"/>
+                            <svg class="gift-icon-svg" viewBox="0 0 100 100">
+                                <!-- Gift Box -->
+                                <rect x="25" y="50" width="50" height="35" rx="2" fill="white" stroke="black" stroke-width="2"/>
+                                <rect x="20" y="45" width="60" height="10" rx="2" fill="white" stroke="black" stroke-width="2"/>
+                                <!-- Ribbon vertical -->
+                                <rect x="47" y="45" width="6" height="40" fill="black"/>
+                                <!-- Bow -->
+                                <path d="M35,45 Q35,35 40,35 Q45,35 50,40 Q55,35 60,35 Q65,35 65,45" fill="none" stroke="black" stroke-width="2"/>
+                                <circle cx="40" cy="35" r="4" fill="white" stroke="black" stroke-width="2"/>
+                                <circle cx="60" cy="35" r="4" fill="white" stroke="black" stroke-width="2"/>
+                                <!-- Dots decoration -->
+                                <circle cx="35" cy="65" r="2" fill="black"/>
+                                <circle cx="65" cy="70" r="2" fill="black"/>
                             </svg>
                         </div>
                         <h3 class="gift-title">Kirim Hadiah</h3>
                         <p class="gift-desc">
-                            Kirim hadiah langsung atau tanyakan alamat pengiriman melalui WhatsApp
+                            Kirim hadiah langsung ke alamat berikut:
                         </p>
                         
-                        <a href="https://wa.me/6281234567890?text=Halo%20Zendy%20%26%20Dilla,%20saya%20ingin%20mengirimkan%20hadiah%20pernikahan" target="_blank" class="whatsapp-btn">
-                            <svg class="wa-icon" viewBox="0 0 24 24" width="24" height="24">
-                                <path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                            </svg>
-                            <span>Hubungi via WhatsApp</span>
-                        </a>
+                        <div class="address-box">
+                            <p class="address-text">Perumahan Rajeg Hill Residence Blok D7 no 4, Tanjakan Mekar (Blok D7 no4 Masjid), KAB. TANGERANG, RAJEG, BANTEN, ID, 15540</p>
+                        </div>
                         
-                        <p class="whatsapp-number">📱 +62 812-3456-7890</p>
+                        <button class="copy-btn" data-copy="address">
+                            <span class="copy-icon"></span> Salin Alamat
+                        </button>
                     </div>
+                
+                <!-- Konfirmasi Pengirim Hadiah -->
+                <div class="gift-confirmation">
+                    <div class="doodle-line" style="margin: 30px 0 20px;">
+                        <svg viewBox="0 0 300 20">
+                            <path d="M0,10 Q30,5 60,10 T120,10 T180,10 T240,10 T300,10" 
+                                  stroke="black" stroke-width="1" fill="none"/>
+                            <circle cx="60" cy="10" r="3" fill="black"/>
+                            <circle cx="150" cy="10" r="3" fill="black"/>
+                            <circle cx="240" cy="10" r="3" fill="black"/>
+                        </svg>
+                    </div>
+                    
+                    <h3 style="font-size: 20px; margin-bottom: 15px; font-weight: 700;">Selamat Menempuh Hidup Baru!</h3>
+                    <p style="font-size: 15px; line-height: 1.6; margin-bottom: 20px; color: #333;">
+                        Terima kasih atas hadiah yang telah dikirimkan. Mohon konfirmasi pengiriman melalui WhatsApp agar kami bisa mengucapkan terima kasih langsung kepada Anda.
+                    </p>
+                    
+                    <a href="https://wa.me/6287877187962?text=Assalamualaikum%20Zendy%20%26%20Dilla.%20Barakallah,%20Selamat%20menempuh%20hidup%20baru!%20%0A%0ASaya%20ingin%20konfirmasi%20bahwa%20hadiah%20sudah%20dikirimkan.%0A%0ANama%3A%20%0AJenis%20hadiah%3A%20" 
+                       target="_blank" 
+                       class="whatsapp-confirm-btn">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="white">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                        </svg>
+                        <span>Konfirmasi via WhatsApp</span>
+                    </a>
+                </div>
                 </div>
             </div>
         </section>
@@ -389,9 +403,9 @@
                         <label>Kehadiran *</label>
                         <select id="attendance" required>
                             <option value="">Pilih</option>
-                            <option value="hadir">✓ Hadir</option>
-                            <option value="tidak-hadir">✗ Tidak Hadir</option>
-                            <option value="ragu">? Masih Ragu</option>
+                            <option value="hadir">Hadir</option>
+                            <option value="tidak-hadir">Tidak Hadir</option>
+                            <option value="ragu">Masih Ragu</option>
                         </select>
                     </div>
                     
@@ -411,12 +425,12 @@
                     </div>
                     
                     <button type="submit" class="submit-btn">
-                        <span>✉</span> Kirim Konfirmasi
+                        Kirim Konfirmasi
                     </button>
                 </form>
 
                 <div class="rsvp-success" id="rsvpSuccess" style="display: none;">
-                    <div class="success-icon">✓</div>
+                    <div class="success-icon"><svg viewBox="0 0 24 24" width="40" height="40"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="black" stroke="black" stroke-width="1"/></svg></div>
                     <h3>Terima Kasih!</h3>
                     <p>Konfirmasi Anda telah tercatat:</p>
                     <div class="rsvp-summary" id="rsvpSummary"></div>
@@ -424,7 +438,7 @@
                 </div>
 
                 <div class="wishes-box">
-                    <h3 class="wishes-title">💌 DOA & HARAPAN</h3>
+                    <h3 class="wishes-title"><svg viewBox="0 0 24 24" width="22" height="22" style="display: inline-block; vertical-align: middle; margin-right: 5px;"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="black" stroke="black" stroke-width="0.5"/></svg>DOA & HARAPAN</h3>
                     <div class="rsvp-list" id="rsvpList">
                         <p class="no-rsvp">Belum ada doa dan harapan</p>
                     </div>
@@ -451,10 +465,6 @@
                     Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada kami.
                 </p>
                 
-                <p class="closing-quote">
-                    "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan dari jenismu sendiri, supaya kamu merasa tenteram kepadanya."
-                </p>
-                
                 <p class="closing-signature">Wassalamu'alaikum Wr. Wb.</p>
                 
                 <div class="closing-couple">
@@ -463,9 +473,15 @@
                 </div>
                 
                 <div class="hearts-row">
-                    <span>♥</span>
-                    <span>♥</span>
-                    <span>♥</span>
+                    <svg viewBox="0 0 100 100" width="30" height="30">
+                        <path d="M50,85 Q20,60 20,40 Q20,20 35,20 Q45,20 50,30 Q55,20 65,20 Q80,20 80,40 Q80,60 50,85" fill="black" stroke="black" stroke-width="2"/>
+                    </svg>
+                    <svg viewBox="0 0 100 100" width="30" height="30">
+                        <path d="M50,85 Q20,60 20,40 Q20,20 35,20 Q45,20 50,30 Q55,20 65,20 Q80,20 80,40 Q80,60 50,85" fill="black" stroke="black" stroke-width="2"/>
+                    </svg>
+                    <svg viewBox="0 0 100 100" width="30" height="30">
+                        <path d="M50,85 Q20,60 20,40 Q20,20 35,20 Q45,20 50,30 Q55,20 65,20 Q80,20 80,40 Q80,60 50,85" fill="black" stroke="black" stroke-width="2"/>
+                    </svg>
                 </div>
 
                 <div class="doodle-line">
@@ -485,7 +501,7 @@
     <div class="modal" id="allRsvpsModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>💌 SEMUA DOA & HARAPAN</h2>
+                <h2><svg viewBox="0 0 24 24" width="24" height="24" style="display: inline-block; vertical-align: middle; margin-right: 5px;"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="black" stroke="black" stroke-width="0.5"/></svg>SEMUA DOA & HARAPAN</h2>
                 <button class="close-modal" id="closeModal">×</button>
             </div>
             <div class="modal-body">

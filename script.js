@@ -1,6 +1,17 @@
 // Wedding Invitation JavaScript - With Photo Cover
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Get guest name from URL parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestName = urlParams.get('nama') || urlParams.get('to');
+    const guestNameElement = document.getElementById('guestName');
+    
+    if (guestName && guestNameElement) {
+        // Decode and capitalize the name
+        const decodedName = decodeURIComponent(guestName);
+        guestNameElement.textContent = decodedName;
+    }
+
     // Elements
     const animatedOpening = document.getElementById('animatedOpening');
     const mainContent = document.getElementById('mainContent');
@@ -367,33 +378,47 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Copy Account Number Function
+    // Copy Account Number and Address Function
     const copyButtons = document.querySelectorAll('.copy-btn');
     
     copyButtons.forEach(button => {
         button.addEventListener('click', function() {
             const accountNumber = this.getAttribute('data-account');
             const bankName = this.getAttribute('data-bank');
+            const copyType = this.getAttribute('data-copy');
             
-            // Copy to clipboard
-            navigator.clipboard.writeText(accountNumber).then(() => {
-                // Change button text temporarily
-                const originalHTML = this.innerHTML;
-                this.innerHTML = '<span class="copy-icon">✓</span> Tersalin!';
-                this.classList.add('copied');
-                
-                // Reset after 2 seconds
-                setTimeout(() => {
-                    this.innerHTML = originalHTML;
-                    this.classList.remove('copied');
-                }, 2000);
-                
-                // Show notification
-                showNotification(`Nomor rekening ${bankName} berhasil disalin!`);
-            }).catch(err => {
-                console.error('Failed to copy:', err);
-                showNotification('Gagal menyalin nomor rekening');
-            });
+            let textToCopy = '';
+            let successMessage = '';
+            
+            if (copyType === 'address') {
+                textToCopy = 'Perumahan Rajeg Hill Residence Blok D7 no 4, Tanjakan Mekar (Blok D7 no4 Masjid), KAB. TANGERANG, RAJEG, BANTEN, ID, 15540';
+                successMessage = 'Alamat berhasil disalin!';
+            } else if (accountNumber) {
+                textToCopy = accountNumber;
+                successMessage = `Nomor rekening ${bankName} berhasil disalin!`;
+            }
+            
+            if (textToCopy) {
+                // Copy to clipboard
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    // Change button text temporarily
+                    const originalHTML = this.innerHTML;
+                    this.innerHTML = '<span class="copy-icon">✓</span> Tersalin!';
+                    this.classList.add('copied');
+                    
+                    // Reset after 2 seconds
+                    setTimeout(() => {
+                        this.innerHTML = originalHTML;
+                        this.classList.remove('copied');
+                    }, 2000);
+                    
+                    // Show notification
+                    showNotification(successMessage);
+                }).catch(err => {
+                    console.error('Failed to copy:', err);
+                    showNotification('Gagal menyalin');
+                });
+            }
         });
     });
 
@@ -455,6 +480,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.head.appendChild(notifStyle);
 
     // Console message
-    console.log('%c💑 Selamat Menempuh Hidup Baru! 💑', 'font-size: 20px; font-weight: bold;');
+    console.log('%c Selamat Menempuh Hidup Baru! ', 'font-size: 20px; font-weight: bold;');
     console.log('%cZendy & Dilla - 28 Maret 2026', 'font-size: 14px;');
 });
