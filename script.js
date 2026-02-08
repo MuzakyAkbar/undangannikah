@@ -3,14 +3,25 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Get guest name from URL parameter
     const urlParams = new URLSearchParams(window.location.search);
-    const guestName = urlParams.get('nama') || urlParams.get('to');
+    let guestName = urlParams.get('nama') || urlParams.get('to');
+    
+    // If no named parameter, check if there's any query string (e.g., ?Akbar%20Keluarga)
+    if (!guestName && window.location.search) {
+        const queryString = window.location.search.substring(1); // Remove the '?'
+        // If query string doesn't contain '=', treat the whole thing as the name
+        if (!queryString.includes('=')) {
+            guestName = queryString;
+        }
+    }
+    
     const guestNameElement = document.getElementById('guestName');
     
     if (guestName && guestNameElement) {
-        // Decode and capitalize the name
-        const decodedName = decodeURIComponent(guestName);
+        // Decode and display the name
+        const decodedName = decodeURIComponent(guestName.replace(/\+/g, ' '));
         guestNameElement.textContent = decodedName;
     }
+
 
     // Elements
     const animatedOpening = document.getElementById('animatedOpening');
