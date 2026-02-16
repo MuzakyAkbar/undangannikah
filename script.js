@@ -1,23 +1,30 @@
 // Wedding Invitation JavaScript - With Photo Cover
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Get guest name from URL parameter
+    // Get guest name from URL - supports multiple formats:
+    // ?nama=Budi          → query param 'nama'
+    // ?to=Budi            → query param 'to'
+    // ?Budi%20Santoso     → raw query string (no key)
+    // #Budi%20Santoso     → hash fragment (RECOMMENDED - tidak minta file ke server, tidak 404)
     const urlParams = new URLSearchParams(window.location.search);
     let guestName = urlParams.get('nama') || urlParams.get('to');
     
-    // If no named parameter, check if there's any query string (e.g., ?Akbar%20Keluarga)
+    // Raw query string: ?NamaTamu (tanpa key=value)
     if (!guestName && window.location.search) {
-        const queryString = window.location.search.substring(1); // Remove the '?'
-        // If query string doesn't contain '=', treat the whole thing as the name
+        const queryString = window.location.search.substring(1);
         if (!queryString.includes('=')) {
             guestName = queryString;
         }
+    }
+
+    // Hash fragment: index.html#NamaTamu (tidak minta ke server → tidak 404)
+    if (!guestName && window.location.hash) {
+        guestName = window.location.hash.substring(1);
     }
     
     const guestNameElement = document.getElementById('guestName');
     
     if (guestName && guestNameElement) {
-        // Decode and display the name
         const decodedName = decodeURIComponent(guestName.replace(/\+/g, ' '));
         guestNameElement.textContent = decodedName;
     }
@@ -445,7 +452,7 @@ document.addEventListener('DOMContentLoaded', function() {
             color: white;
             padding: 15px 30px;
             border-radius: 30px;
-            font-family: 'Kalam', cursive;
+            font-family: 'Cinzel', serif;
             font-weight: 700;
             z-index: 10000;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
