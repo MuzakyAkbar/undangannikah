@@ -558,17 +558,17 @@ body {
 .detail-item {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 8px;
 }
 
 .detail-icon {
     flex-shrink: 0;
-    margin-right: 15px;
+    margin-right: 6px;
 }
 
 .detail-text { 
     text-align: left; 
-    line-height: 1.6; 
+    line-height: 1.1; 
     font-family: 'Cormorant Garamond', serif;
     font-size: 16px;
 }
@@ -578,7 +578,8 @@ body {
     font-size: 14px;
     letter-spacing: 1px;
     display: block;
-    margin-bottom: 2px;
+    margin-bottom: -3px;
+    line-height: 1.1;
 }
 
 .dashed-line {
@@ -1296,14 +1297,14 @@ body {
 .event-details-card {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 28px;
     align-items: center;
 }
 
 .event-details-card .detail-item {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 8px;
 }
 
 /* Address Box */
