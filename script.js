@@ -153,7 +153,35 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1000);
     }
 
+    // ============================================================
+    // SUPABASE CONFIG
+    // ============================================================
+    const SUPABASE_URL = 'https://cxmusrwehcdrxsntiavy.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN4bXVzcndlaGNkcnhzbnRpYXZ5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzMzQ3NzEsImV4cCI6MjA4NjkxMDc3MX0.oM0a0Av9nT-o1TfhmBBku7z5aKz0mKccVjIbHzWGdXs';
+
+    async function supabaseFetch(path, options = {}) {
+        const { prefer, headers: extraHeaders, ...restOptions } = options;
+        const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
+            ...restOptions,
+            headers: {
+                'apikey': SUPABASE_ANON_KEY,
+                'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                'Content-Type': 'application/json',
+                'Prefer': prefer || 'return=representation',
+                ...(extraHeaders || {})
+            }
+        });
+        if (!res.ok) {
+            const err = await res.text();
+            throw new Error(err);
+        }
+        const text = await res.text();
+        return text ? JSON.parse(text) : null;
+    }
+
+    // ============================================================
     // RSVP Form Handling
+    // ============================================================
     const rsvpForm = document.getElementById('rsvpForm');
     const rsvpSuccess = document.getElementById('rsvpSuccess');
     const rsvpSummary = document.getElementById('rsvpSummary');
@@ -164,19 +192,22 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeModal = document.getElementById('closeModal');
     const allRsvpsList = document.getElementById('allRsvpsList');
 
-    // Load existing RSVPs
+    // Load existing RSVPs on page load
     loadRSVPs();
 
     if (rsvpForm) {
-        rsvpForm.addEventListener('submit', function(e) {
+        rsvpForm.addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            const name = document.getElementById('name').value;
+            const submitBtn = rsvpForm.querySelector('.submit-btn');
+            submitBtn.textContent = 'Mengirim...';
+            submitBtn.disabled = true;
+
+            const name = document.getElementById('name').value.trim();
             const attendance = document.getElementById('attendance').value;
             const guests = document.getElementById('guests').value;
-            const message = document.getElementById('message').value;
+            const message = document.getElementById('message').value.trim();
 
-            // Get status text
             let statusText = '';
             let statusClass = '';
             if (attendance === 'hadir') {
@@ -190,61 +221,61 @@ document.addEventListener('DOMContentLoaded', function() {
                 statusClass = 'ragu';
             }
 
-            // Create RSVP object
-            const rsvp = {
-                id: Date.now(),
-                name: name,
-                attendance: attendance,
-                statusText: statusText,
-                statusClass: statusClass,
-                guests: guests,
-                message: message,
-                timestamp: new Date().toLocaleString('id-ID', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                })
-            };
+            const timestamp = new Date().toLocaleString('id-ID', {
+                year: 'numeric', month: 'long', day: 'numeric',
+                hour: '2-digit', minute: '2-digit'
+            });
 
-            // Save to localStorage
-            saveRSVP(rsvp);
+            try {
+                await supabaseFetch('rsvps', {
+                    method: 'POST',
+                    prefer: 'return=minimal',
+                    body: JSON.stringify({
+                        name,
+                        attendance,
+                        status_text: statusText,
+                        status_class: statusClass,
+                        guests: parseInt(guests),
+                        message,
+                        timestamp
+                    })
+                });
 
-            // Show summary
-            rsvpSummary.innerHTML = `
-                <p><strong>Nama:</strong> ${name}</p>
-                <p><strong>Status:</strong> ${statusText}</p>
-                <p><strong>Jumlah Tamu:</strong> ${guests} orang</p>
-                ${message ? `<p><strong>Ucapan:</strong> ${message}</p>` : ''}
-                <p><strong>Waktu:</strong> ${rsvp.timestamp}</p>
-            `;
+                rsvpSummary.innerHTML = `
+                    <p><strong>Nama:</strong> ${name}</p>
+                    <p><strong>Status:</strong> ${statusText}</p>
+                    <p><strong>Jumlah Tamu:</strong> ${guests} orang</p>
+                    ${message ? `<p><strong>Ucapan:</strong> ${message}</p>` : ''}
+                    <p><strong>Waktu:</strong> ${timestamp}</p>
+                `;
 
-            // Hide form, show success
-            rsvpForm.style.display = 'none';
-            rsvpSuccess.style.display = 'block';
+                rsvpForm.style.display = 'none';
+                rsvpSuccess.style.display = 'block';
+                loadRSVPs();
+                rsvpSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                createConfetti();
 
-            // Reload RSVP list
-            loadRSVPs();
-
-            // Scroll to success message
-            rsvpSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-            // Show confetti
-            createConfetti();
+            } catch (err) {
+                console.error('Gagal kirim RSVP:', err);
+                alert('Gagal mengirim konfirmasi. Silakan coba lagi.');
+                submitBtn.textContent = 'Kirim Konfirmasi';
+                submitBtn.disabled = false;
+            }
         });
     }
 
     if (btnAnother) {
         btnAnother.addEventListener('click', function() {
             rsvpForm.reset();
+            const submitBtn = rsvpForm.querySelector('.submit-btn');
+            submitBtn.textContent = 'Kirim Konfirmasi';
+            submitBtn.disabled = false;
             rsvpForm.style.display = 'block';
             rsvpSuccess.style.display = 'none';
             rsvpForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
     }
 
-    // View All Button
     if (viewAllBtn) {
         viewAllBtn.addEventListener('click', function() {
             loadAllRSVPs();
@@ -253,7 +284,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Close Modal
     if (closeModal) {
         closeModal.addEventListener('click', function() {
             allRsvpsModal.classList.remove('active');
@@ -261,7 +291,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Close modal when clicking outside
     if (allRsvpsModal) {
         allRsvpsModal.addEventListener('click', function(e) {
             if (e.target === allRsvpsModal) {
@@ -271,66 +300,56 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    function saveRSVP(rsvp) {
-        let rsvps = JSON.parse(localStorage.getItem('wedding_rsvps') || '[]');
-        rsvps.unshift(rsvp);
-        localStorage.setItem('wedding_rsvps', JSON.stringify(rsvps));
+    function renderRsvpItem(rsvp) {
+        return `
+            <div class="rsvp-item">
+                <div class="rsvp-name">${rsvp.name}</div>
+                <span class="rsvp-status ${rsvp.status_class}">${rsvp.status_text}</span>
+                <div class="rsvp-guests">👥 ${rsvp.guests} orang</div>
+                ${rsvp.message ? `<div class="rsvp-message">"${rsvp.message}"</div>` : ''}
+                <div style="font-size: 12px; color: #999; margin-top: 8px;">${rsvp.timestamp}</div>
+            </div>
+        `;
     }
 
-    function loadRSVPs() {
-        let rsvps = JSON.parse(localStorage.getItem('wedding_rsvps') || '[]');
-        
-        if (rsvps.length === 0) {
-            if(rsvpList) rsvpList.innerHTML = '<p class="no-rsvp">Belum ada doa dan harapan</p>';
-            if(viewAllBtn) viewAllBtn.style.display = 'none';
-            return;
-        }
+    async function loadRSVPs() {
+        try {
+            const data = await supabaseFetch('rsvps?select=*&order=created_at.desc&limit=5');
 
-        // Show only first 5
-        const recentRsvps = rsvps.slice(0, 5);
-        
-        if(rsvpList) {
-            rsvpList.innerHTML = recentRsvps.map(rsvp => `
-                <div class="rsvp-item">
-                    <div class="rsvp-name">${rsvp.name}</div>
-                    <span class="rsvp-status ${rsvp.statusClass}">${rsvp.statusText}</span>
-                    <div class="rsvp-guests">👥 ${rsvp.guests} orang</div>
-                    ${rsvp.message ? `<div class="rsvp-message">"${rsvp.message}"</div>` : ''}
-                    <div style="font-size: 12px; color: #999; margin-top: 8px;">${rsvp.timestamp}</div>
-                </div>
-            `).join('');
-        }
-
-        // Show "View All" button if more than 5
-        if (viewAllBtn) {
-            if (rsvps.length > 5) {
-                viewAllBtn.style.display = 'block';
-            } else {
-                viewAllBtn.style.display = 'none';
+            if (!data || data.length === 0) {
+                if (rsvpList) rsvpList.innerHTML = '<p class="no-rsvp">Belum ada doa dan harapan</p>';
+                if (viewAllBtn) viewAllBtn.style.display = 'none';
+                return;
             }
+
+            if (rsvpList) rsvpList.innerHTML = data.map(renderRsvpItem).join('');
+
+            // Check total count for "View All" button
+            const allData = await supabaseFetch('rsvps?select=id');
+            const total = allData ? allData.length : 0;
+            if (viewAllBtn) viewAllBtn.style.display = total > 5 ? 'block' : 'none';
+
+        } catch (err) {
+            console.error('Gagal load RSVPs:', err);
+            if (rsvpList) rsvpList.innerHTML = '<p class="no-rsvp">Gagal memuat data</p>';
         }
     }
 
-    function loadAllRSVPs() {
-        let rsvps = JSON.parse(localStorage.getItem('wedding_rsvps') || '[]');
-        
-        if (rsvps.length === 0) {
-            if(allRsvpsList) allRsvpsList.innerHTML = '<p class="no-rsvp">Belum ada doa dan harapan</p>';
-            return;
-        }
-
-        if(allRsvpsList) {
-            allRsvpsList.innerHTML = rsvps.map(rsvp => `
-                <div class="rsvp-item">
-                    <div class="rsvp-name">${rsvp.name}</div>
-                    <span class="rsvp-status ${rsvp.statusClass}">${rsvp.statusText}</span>
-                    <div class="rsvp-guests">👥 ${rsvp.guests} orang</div>
-                    ${rsvp.message ? `<div class="rsvp-message">"${rsvp.message}"</div>` : ''}
-                    <div style="font-size: 12px; color: #999; margin-top: 8px;">${rsvp.timestamp}</div>
-                </div>
-            `).join('');
+    async function loadAllRSVPs() {
+        if (allRsvpsList) allRsvpsList.innerHTML = '<p class="no-rsvp">Memuat...</p>';
+        try {
+            const data = await supabaseFetch('rsvps?select=*&order=created_at.desc');
+            if (!data || data.length === 0) {
+                if (allRsvpsList) allRsvpsList.innerHTML = '<p class="no-rsvp">Belum ada doa dan harapan</p>';
+                return;
+            }
+            if (allRsvpsList) allRsvpsList.innerHTML = data.map(renderRsvpItem).join('');
+        } catch (err) {
+            console.error('Gagal load semua RSVPs:', err);
+            if (allRsvpsList) allRsvpsList.innerHTML = '<p class="no-rsvp">Gagal memuat data</p>';
         }
     }
+
 
     function createConfetti() {
         const colors = ['#000', '#fff'];
